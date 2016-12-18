@@ -1,0 +1,60 @@
+<br/><br/>
+
+<div ng-controller="DegreeTypeController">
+<h2 class="alert alert-success">Degree Type Manager using Spring Boot Angular, Spring Data REST &amp; AngularJS</h2>
+	<div id="task-panel" class="fadein fadeout showpanel panel"  ng-show="toggle">	
+		<div class="panel-heading">
+			<i class="panel-title-icon fa fa-tasks"></i>
+			<span class="panel-title">Degree Types</span>
+			<div class="panel-heading-controls">
+				<button ng-click="toggle = !toggle" class="btn-panel">Add New Degree Type</button>
+			</div>
+		</div>
+		<div class="panel-body">
+			 <table class="table-striped">
+    			<thead>
+      				<tr>
+        				<th>Degree Name</th>
+        				<th>Degree Description</th>
+        		    </tr>
+    			</thead>
+    			<tbody>
+    				<tr ng-repeat="degreeType in degreeTypes">
+        				<td>{{degreeType.degreeTypeName}}</td>
+        				<td>{{degreeType.degreeTypeDescription}}</td>
+			        </tr>
+			     </tbody>
+  			</table>
+			<!-- <div class="task" ng-repeat="degreeType in degreeTypes">
+				<span>{{degreeType.degreeTypeName}}</span>
+				<span>{{degreeType.degreeTypeDescription}}</span>
+			</div> -->
+		</div>
+	</div>
+	<div id="add-degree-type-panel" class="fadein fadeout addpanel panel" ng-hide="toggle">
+		<div class="panel-heading">
+			<i class="panel-title-icon fa fa-plus"></i>
+			<span class="panel-title">Add Degree Type</span>
+			<div class="panel-heading-controls">
+				<button ng-click="toggle = !toggle" class="btn-panel">Show All Degree Types</button>
+			</div>
+		</div>
+		<div class="panel-body">
+			<div class="task" >
+				<table class="add-task">
+					<tr>
+						<td>Degree Type Name:</td>
+						<td><input type="text" ng-model="degreeTypeName"/></td>
+					</tr>
+					<tr>
+						<td>Degree Type Description:</td>
+						<td><input type="text" ng-model="degreeTypeDescription"/></td>
+					</tr>
+					<tr>
+						<td><br/><button ng-click="addDegreeType()" class="btn-panel-big">Add New Degree Type</button></td>
+					</tr>
+				</table>								
+			</div>
+		</div>
+	</div>
+</div>

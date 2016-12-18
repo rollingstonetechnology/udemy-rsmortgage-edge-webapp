@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html ng-app="udemyApp">
+<head>
+	<meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Demo</title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width"/>
+    <base href="/"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+<!--     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+ -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+<style type="text/css">
+.jumbotron,
+.page {
+	padding-top: 140px;
+	padding-bottom: 140px;
+	margin-bottom: 0px;
+}
+
+input.form-control {
+   height:27px !important;
+}
+
+input-group-addon {
+   height:20px !important;
+}
+
+.glyphicon {
+    font-size: 10px;
+}
+
+.btn-space {
+    margin-left: 5px;
+}
+
+.fa-facebook {
+  color: white;
+}
+
+.login-div {
+	 padding-left: 80px; 
+}
+
+</style>    
+</head>
+<body ng-app="app">
+<!-- Start Navigation Bar -->
+<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">RSM</a>
+        </div>
+        <center>
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home Loan</a></li>
+                    <li><a href="#">Auto Loan</a></li>
+                    <li><a href="#">Student Loan</a></li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search" th:action="@{/login}" method="POST">
+                  <div class="input-group col-xs-3">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="email" type="text" class="form-control" name="username" value="" placeholder="username">                                        
+                        </div>
+                        <div class="input-group col-xs-3">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input id="password" type="password" class="form-control" name="password" value="" placeholder="Password">                                        
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-sm btn-space">Login</button>
+                        <a class="btn btn-primary btn-sm btn-space" href="/signup">Register</a>
+                </form>
+                  <form id="facebook"  class="navbar-form navbar-right" role="search" action="/signin/facebook" method="POST">
+	           		 <input type="hidden" name="scope" value="public_profile" />
+	            	 <input type="submit" class="btn btn-primary btn-link" value="Login using"/> <i class="fa fa-facebook"></i>     
+	    		  </form>
+            </div>
+        </center>
+    </div>
+</div>
+<!-- End Navigation Bar -->
+
+<!-- Start Section -->
+<div id="headline" class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>Black Friday New Deals!!!</h1>
+        <p>Upto 40% Off in All Merchandise</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Section -->
+<!-- Start Footer -->
+<footer id="footer" class="jumbotron" style="background:transparent;">
+  <div class="container">
+  	    <div class="row">
+      <div class="row-fluid">
+        <div class="col-md-4 text-center">
+          <div class="panel panel-default">
+            <div class="panel-body text-center">
+              <h3>Customer Service<br>
+            </div>
+            <ul class="list-group">
+              <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">Order Status</a></li>
+	          <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">Product Returns</a></li>
+			  <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">Fulfillment(Shipping &amp Delivery)</a></li>
+			  <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">Provide Feedback</a></li>
+			  <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">Contact Us</a></li>
+            </ul>
+            <div class="panel-footer"><a href="#" class="btn btn-primary btn-lg"><i class="fa fa-shopping-cart"></i> Sign Up Now</a></div>
+          </div>
+        </div>
+        <div class="col-md-4 text-center">
+          <div class="panel panel-default">
+            <div class="panel-body text-center">
+              <h3>Stores &amp Services<br>
+            </div>
+            <ul class="list-group">
+              <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">Store Locator</a></li>
+	          <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">Hot Deals</a></li>
+            </ul>
+            <div class="panel-footer"><a href="#" class="btn btn-primary btn-lg"><i class="fa fa-shopping-cart"></i> Sign Up Now</a></div>
+          </div>
+        </div>
+        <div class="col-md-4 text-center">
+          <div class="panel panel-default">
+            <div class="panel-body text-center">
+              <h3>Your Account<br>
+            </div>
+            <ul class="list-group">
+              <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">Login To Your Account</a></li>
+	          <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">View Rewards</a></li>
+	          <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">Pay Bills</a></li>
+	          <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">Buy Gift Cards</a></li>
+            </ul>
+            <div class="panel-footer"><a href="#getquote" class="btn btn-primary btn-lg" data-toggle="modal"><i class="fa fa-shopping-cart"></i> Contact Us</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+<!-- End Footer -->
+<!-- Start Bottom Nav -->
+<div id="bottomnav" class="jumbotron" style="padding-top:40px; padding-bottom:40px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">Copyright 2015 YourWebsite.com | <a href="#">Terms</a> | <a href="#">Privacy</a></div>
+    </div>
+  </div>
+</div>	
+
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular-resource.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular-route.js"></script>
+	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular-animate.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular-cookies.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular-sanitize.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular-touch.js"></script>
+	<script type="text/javascript" src="scripts/app.js"></script>
+</body>
+</html>

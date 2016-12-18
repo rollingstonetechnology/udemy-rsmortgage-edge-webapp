@@ -1,0 +1,2 @@
+-- Test User
+insert into User (id, username,email, password, enabled, created) values (1, 'john', 'john@email.com', '123', true, '2008-08-08 00:00:00');

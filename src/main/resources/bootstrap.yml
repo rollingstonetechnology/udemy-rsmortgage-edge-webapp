@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: rsmortgage-web-app

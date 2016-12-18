@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/  
+
+#zuul:
+#  routes:
+#    rsmortgage-degreetype-service: /rsmortgage-degreetype-service/**
+    
+    
+zuul:
+ routes:
+  rsmortgage-degreetype-service:
+   path: /rsmortgage-degreetype-service/**
+   url: http://localhost:8080
+#   stripPrefix: false    
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000

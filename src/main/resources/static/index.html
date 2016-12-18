@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html ng-app="udemyApp">
+<head>
+	<meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Demo</title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width"/>
+    <base href="/"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+.jumbotron,
+.page {
+	padding-top: 140px;
+	padding-bottom: 140px;
+	margin-bottom: 0px;
+}
+</style>    
+</head>
+<body>
+<!-- Start Navigation Bar -->
+<nav id="topnavigation" class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topnav" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand" href="#">RSEcomm</a> </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div id="topnav" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="template.html">Home</a></li>
+        <li class="active"><a href="/mens.html">Mens</a></li>
+        <li class="active"><a href="/womens.html">Womens</a></li>
+        <li class="active"><a href="/cart.html">Cart</a></li>
+        <li class="active"><a href="/pastorders.html">Past Orders</a></li>
+         <li class="dropdown" sec:authentication="name"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="fa fa-list-alt"></i>Customer<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#applicant">Add Applicant<span class="label label-success">NEW!</span></a></li>
+            <li><a href="#property">Add Property</a></li>
+            <li><a href="#employment">Add Employment</a></li>
+            <li><a href="#education">Add Education</a></li>
+            <li><a href="#investment">Add Investment</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#expenses">Add Expenses</a></li>
+            <li><a href="#submitloan">Submit Loan Application</a></li>
+          </ul>
+        </li>
+        <li class="dropdown" sec:authentication="name"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="fa fa-list-alt"></i> Admin <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#headline">Order Appraisal<span class="label label-success">NEW!</span></a></li>
+            <li><a href="#testimonials">Update Appraisal</a></li>
+            <li><a href="#carousel">View Pending Loans</a></li>
+            <li><a href="#tabs">View Approve Loans</a></li>
+            <li><a href="#tabs">Prepare Closing Docs</a></li>
+            <li><a href="#features">Order Post Closing</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      	<p class="navbar-text" sec:authentication="name"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook <a href="/login">click here</a></p>
+      	<p class="navbar-text" sec:authentication="name"><img src="images/avatar02.jpg" width="18" class="img-circle">
+			Logged in as: <span ng-bind="home.user"></span>
+      		<button ng-click="home.logout()" class="btn btn-xs btn-link">Logout</button>
+      	</p>
+	</div>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+<!-- End Navigation Bar -->
+
+<!-- Start Section -->
+<div id="headline" class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>Black Friday New Deals!!!</h1>
+        <p>Upto 40% Off in All Merchandise</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Section -->
+<!-- Start Footer -->
+<footer id="footer" class="jumbotron" style="background:transparent;">
+  <div class="container">
+  	    <div class="row">
+      <div class="row-fluid">
+        <div class="col-md-4 text-center">
+          <div class="panel panel-default">
+            <div class="panel-body text-center">
+              <h3>Customer Service<br>
+            </div>
+            <ul class="list-group">
+              <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">Order Status</a></li>
+	          <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">Product Returns</a></li>
+			  <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">Fulfillment(Shipping &amp Delivery)</a></li>
+			  <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">Provide Feedback</a></li>
+			  <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">Contact Us</a></li>
+            </ul>
+            <div class="panel-footer"><a href="#" class="btn btn-primary btn-lg"><i class="fa fa-shopping-cart"></i> Sign Up Now</a></div>
+          </div>
+        </div>
+        <div class="col-md-4 text-center">
+          <div class="panel panel-default">
+            <div class="panel-body text-center">
+              <h3>Stores &amp Services<br>
+            </div>
+            <ul class="list-group">
+              <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">Store Locator</a></li>
+	          <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">Hot Deals</a></li>
+            </ul>
+            <div class="panel-footer"><a href="#" class="btn btn-primary btn-lg"><i class="fa fa-shopping-cart"></i> Sign Up Now</a></div>
+          </div>
+        </div>
+        <div class="col-md-4 text-center">
+          <div class="panel panel-default">
+            <div class="panel-body text-center">
+              <h3>Your Account<br>
+            </div>
+            <ul class="list-group">
+              <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">Login To Your Account</a></li>
+	          <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">View Rewards</a></li>
+	          <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">Pay Bills</a></li>
+	          <li class="list-group-item"><a href="#" rel="tooltip" title="Decription of item here">Buy Gift Cards</a></li>
+            </ul>
+            <div class="panel-footer"><a href="#getquote" class="btn btn-primary btn-lg" data-toggle="modal"><i class="fa fa-shopping-cart"></i> Contact Us</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+<!-- End Footer -->
+<!-- Start Bottom Nav -->
+<div id="bottomnav" class="jumbotron" style="padding-top:40px; padding-bottom:40px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">Copyright 2015 YourWebsite.com | <a href="#">Terms</a> | <a href="#">Privacy</a></div>
+    </div>
+  </div>
+</div>	
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular-resource.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular-route.js"></script>
+	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular-animate.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular-cookies.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular-sanitize.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular-touch.js"></script>
+	<script type="text/javascript" src="scripts/app.js"></script>
+</body>
+</html>
