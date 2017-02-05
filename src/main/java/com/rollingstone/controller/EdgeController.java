@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -36,5 +37,23 @@ public class EdgeController {
 	    List<DegreeType> getAllDegreeTypes(HttpServletRequest request, HttpServletResponse response) {
 		  slf4jLogger.info("In EdgeController");
 	        return this.edgeService.getAllDegreeTypes();
+	    }
+	  
+	  @RequestMapping(value = "/v1/degreeType",
+	            method = RequestMethod.POST,
+	            produces = {"application/json", "application/xml"})
+	    @ResponseStatus(HttpStatus.CREATED)
+	    public
+	    @ResponseBody
+	    void createDegreeType(@RequestBody DegreeType degreeType, 
+	    		HttpServletRequest request, HttpServletResponse response) {
+		  slf4jLogger.info("In EdgeController Create : ");
+		  if (degreeType == null){
+			  slf4jLogger.info("In EdgeController Create DegreeType is null: ");
+		  }
+		  else {
+			  slf4jLogger.info("In EdgeController Create : DegreeType is not null :"+degreeType.getDegreeTypeName() + " " + degreeType.getDegreeTypeDescription());
+		  }
+	        this.edgeService.createDegreeType(degreeType);
 	    }
 }

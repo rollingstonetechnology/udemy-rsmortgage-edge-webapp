@@ -11,6 +11,11 @@ import com.rollingstone.persistence.model.DegreeType;
 
 @FeignClient("rsmortgage-degreetype-service")
 interface DegreeTypesClient {
+	
 	@RequestMapping(method = RequestMethod.GET, value="/rsmortgage-degreetype-service/v1/degreeType/all")
 	List<DegreeType> getDegreeTypes();
+	
+	@RequestMapping(method = RequestMethod.POST, value="/rsmortgage-degreetype-service/v1/degreeType", 
+			consumes = "application/json")
+	void createDegreeType(DegreeType degreeType);
 }

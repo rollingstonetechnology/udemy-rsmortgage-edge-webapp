@@ -1,0 +1,24 @@
+<br/><br/>
+
+<div ng-controller="DegreeTypeController">
+<h2 class="alert alert-success">Degree Type Manager using Spring Boot Angular, Spring Data REST &amp; AngularJS</h2>
+	<div id="add-degree-type-panel" class="fadein fadeout addpanel panel">
+		<div class="panel-body">
+			<div class="task" >
+				<table class="add-task">
+					<tr>
+						<td>Degree Type Name:</td>
+						<td><input type="text" ng-model="degreeTypeName"/></td>
+					</tr>
+					<tr>
+						<td>Degree Type Description:</td>
+						<td><input type="text" ng-model="degreeTypeDescription"/></td>
+					</tr>
+					<tr>
+						<td><br/><button ng-click="addDegreeType()" class="btn-panel-big">Add New Degree Type</button></td>
+					</tr>
+				</table>								
+			</div>
+		</div>
+	</div>
+</div>

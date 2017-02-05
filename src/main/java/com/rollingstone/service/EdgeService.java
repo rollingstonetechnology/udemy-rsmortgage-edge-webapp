@@ -24,5 +24,9 @@ public class EdgeService  {
 		return degreeTypesClient.getDegreeTypes();
 	}
     
+	public void createDegreeType(DegreeType degreeType){
+		degreeTypesClient.createDegreeType(degreeType);
+	}
+    
    
 }
