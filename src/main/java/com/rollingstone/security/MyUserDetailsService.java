@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.rollingstone.persistence.dao.UserRepository;
-import com.rollingstone.persistence.model.User;
+import com.rollingstone.persistence.model.RsMortgageUser;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {
@@ -43,7 +43,7 @@ public class MyUserDetailsService implements UserDetailsService {
     	
     	slf4jLogger.info("Inside loadUserByUsername :"+username);
     	
-        final User user = userRepository.findByUsername(username);
+        final RsMortgageUser user = userRepository.findByUsername(username);
         if (user == null) {
         	slf4jLogger.info("Inside loadUserByUsername is null:");
             throw new UsernameNotFoundException(username);

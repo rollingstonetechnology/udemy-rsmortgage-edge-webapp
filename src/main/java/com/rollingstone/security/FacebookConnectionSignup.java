@@ -8,7 +8,7 @@ import org.springframework.social.connect.ConnectionSignUp;
 import org.springframework.stereotype.Service;
 
 import com.rollingstone.persistence.dao.UserRepository;
-import com.rollingstone.persistence.model.User;
+import com.rollingstone.persistence.model.RsMortgageUser;
 
 @Service
 public class FacebookConnectionSignup implements ConnectionSignUp {
@@ -19,7 +19,7 @@ public class FacebookConnectionSignup implements ConnectionSignUp {
     @Override
     public String execute(Connection<?> connection) {
         System.out.println("signup === ");
-        final User user = new User();
+        final RsMortgageUser user = new RsMortgageUser();
         user.setUsername(connection.getDisplayName());
         user.setPassword(randomAlphabetic(8));
         userRepository.save(user);

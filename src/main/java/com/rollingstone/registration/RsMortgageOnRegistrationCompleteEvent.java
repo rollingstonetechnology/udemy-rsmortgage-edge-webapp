@@ -3,14 +3,14 @@ package com.rollingstone.registration;
 
 import org.springframework.context.ApplicationEvent;
 
-import com.rollingstone.persistence.model.User;
+import com.rollingstone.persistence.model.RsMortgageUser;
 
-public class OnRegistrationCompleteEvent extends ApplicationEvent {
+public class RsMortgageOnRegistrationCompleteEvent extends ApplicationEvent {
 
     private final String appUrl;
-    private final User user;
+    private final RsMortgageUser user;
 
-    public OnRegistrationCompleteEvent(final User user, final String appUrl) {
+    public RsMortgageOnRegistrationCompleteEvent(final RsMortgageUser user, final String appUrl) {
         super(user);
         this.user = user;
         this.appUrl = appUrl;
@@ -22,7 +22,7 @@ public class OnRegistrationCompleteEvent extends ApplicationEvent {
         return appUrl;
     }
 
-    public User getUser() {
+    public RsMortgageUser getUser() {
         return user;
     }
 

@@ -11,14 +11,14 @@ import org.springframework.stereotype.Service;
 import com.rollingstone.persistence.dao.PasswordResetTokenRepository;
 import com.rollingstone.persistence.dao.UserRepository;
 import com.rollingstone.persistence.dao.VerificationTokenRepository;
-import com.rollingstone.persistence.model.PasswordResetToken;
-import com.rollingstone.persistence.model.User;
-import com.rollingstone.persistence.model.VerificationToken;
+import com.rollingstone.persistence.model.RSMortgagePasswordResetToken;
+import com.rollingstone.persistence.model.RsMortgageUser;
+import com.rollingstone.persistence.model.RsMortgageVerificationToken;
 import com.rollingstone.validation.EmailExistsException;
 
 @Service
 @Transactional
-class UserService implements IUserService {
+class UserService implements RSMortgageUserServiceInterface {
 
 	private final Logger slf4jLogger = LoggerFactory.getLogger(UserService.class);
 
@@ -36,7 +36,7 @@ class UserService implements IUserService {
 
     
     @Override
-    public User registerNewUser(final User user) throws EmailExistsException {
+    public RsMortgageUser registerNewUser(final RsMortgageUser user) throws EmailExistsException {
         if (emailExist(user.getEmail())) {
             throw new EmailExistsException("There is an account with that email address: " + user.getEmail());
         }
@@ -49,40 +49,40 @@ class UserService implements IUserService {
     }
 
     @Override
-    public User findUserByEmail(final String email) {
+    public RsMortgageUser findUserByEmail(final String email) {
         return userRepository.findByEmail(email);
     }
 
     @Override
-    public void createPasswordResetTokenForUser(final User user, final String token) {
-        final PasswordResetToken myToken = new PasswordResetToken(token, user);
+    public void createPasswordResetTokenForUser(final RsMortgageUser user, final String token) {
+        final RSMortgagePasswordResetToken myToken = new RSMortgagePasswordResetToken(token, user);
         passwordTokenRepository.save(myToken);
     }
 
     @Override
-    public PasswordResetToken getPasswordResetToken(final String token) {
+    public RSMortgagePasswordResetToken getPasswordResetToken(final String token) {
         return passwordTokenRepository.findByToken(token);
     }
 
     @Override
-    public void changeUserPassword(final User user, final String password) {
+    public void changeUserPassword(final RsMortgageUser user, final String password) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 
     @Override
-    public void createVerificationTokenForUser(final User user, final String token) {
-        final VerificationToken myToken = new VerificationToken(token, user);
+    public void createVerificationTokenForUser(final RsMortgageUser user, final String token) {
+        final RsMortgageVerificationToken myToken = new RsMortgageVerificationToken(token, user);
         verificationTokenRepository.save(myToken);
     }
 
     @Override
-    public VerificationToken getVerificationToken(final String token) {
+    public RsMortgageVerificationToken getVerificationToken(final String token) {
         return verificationTokenRepository.findByToken(token);
     }
 
     @Override
-    public void saveRegisteredUser(final User user) {
+    public void saveRegisteredUser(final RsMortgageUser user) {
     	slf4jLogger.info("Kakima password :"+user.getPassword());
     	
         //user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -90,7 +90,7 @@ class UserService implements IUserService {
     }
 
     private boolean emailExist(final String email) {
-        final User user = userRepository.findByEmail(email);
+        final RsMortgageUser user = userRepository.findByEmail(email);
         return user != null;
     }
 

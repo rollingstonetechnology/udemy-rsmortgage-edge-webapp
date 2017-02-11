@@ -2,12 +2,12 @@ package com.rollingstone.persistence.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.rollingstone.persistence.model.User;
+import com.rollingstone.persistence.model.RsMortgageUser;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<RsMortgageUser, Long> {
 
-    User findByEmail(String email);
+    RsMortgageUser findByEmail(String email);
     
-    User findByUsername(final String username);
+    RsMortgageUser findByUsername(final String username);
 
 }

@@ -1,8 +1,5 @@
 package com.rollingstone.persistence.model;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,37 +9,45 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import java.util.Calendar;
+import java.util.Date;
+
 @Entity
-@Table(name = "rsmortgage_passwordresettoken")
-public class PasswordResetToken {
+@Table(name = "rsmortgage_verificationtoken")
+public class RsMortgageVerificationToken {
 
     private static final int EXPIRATION = 60 * 24;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String token;
 
-    @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
+    @OneToOne(targetEntity = RsMortgageUser.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "user_id")
-    private User user;
+    private RsMortgageUser user;
 
     private Date expiryDate;
 
-    public PasswordResetToken() {
+    public RsMortgageVerificationToken() {
         super();
     }
 
-    public PasswordResetToken(final String token, final User user) {
+    public RsMortgageVerificationToken(final String token) {
+        super();
+
+        this.token = token;
+        this.expiryDate = calculateExpiryDate(EXPIRATION);
+    }
+
+    public RsMortgageVerificationToken(final String token, final RsMortgageUser user) {
         super();
 
         this.token = token;
         this.user = user;
         this.expiryDate = calculateExpiryDate(EXPIRATION);
     }
-
-    //
 
     public String getToken() {
         return token;
@@ -52,11 +57,11 @@ public class PasswordResetToken {
         this.token = token;
     }
 
-    public User getUser() {
+    public RsMortgageUser getUser() {
         return user;
     }
 
-    public void setUser(final User user) {
+    public void setUser(final RsMortgageUser user) {
         this.user = user;
     }
 
@@ -103,7 +108,7 @@ public class PasswordResetToken {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final PasswordResetToken other = (PasswordResetToken) obj;
+        final RsMortgageVerificationToken other = (RsMortgageVerificationToken) obj;
         if (expiryDate == null) {
             if (other.expiryDate != null) {
                 return false;

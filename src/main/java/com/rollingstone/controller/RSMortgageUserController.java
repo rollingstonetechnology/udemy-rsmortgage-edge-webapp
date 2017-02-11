@@ -16,8 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.rollingstone.persistence.dao.UserRepository;
-import com.rollingstone.persistence.model.User;
-import com.rollingstone.service.IUserService;
+import com.rollingstone.persistence.model.RsMortgageUser;
+import com.rollingstone.service.RSMortgageUserServiceInterface;
 import com.rollingstone.validation.EmailExistsException;
 
 
@@ -31,24 +31,24 @@ class RSMortgageUserController {
     private UserRepository userRepository;
 
     @Autowired
-    private IUserService userService;
+    private RSMortgageUserServiceInterface userService;
 
     //
 
     @RequestMapping
     public ModelAndView list() {
     	slf4jLogger.info("Inside the list method");
-        Iterable<User> users = this.userRepository.findAll();
+        Iterable<RsMortgageUser> users = this.userRepository.findAll();
         return new ModelAndView("tl/list", "users", users);
     }
 
     @RequestMapping("{id}")
-    public ModelAndView view(@PathVariable("id") final User user) {
+    public ModelAndView view(@PathVariable("id") final RsMortgageUser user) {
         return new ModelAndView("tl/view", "user", user);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView create(@Valid final User user, final BindingResult result, final RedirectAttributes redirect) {
+    public ModelAndView create(@Valid final RsMortgageUser user, final BindingResult result, final RedirectAttributes redirect) {
         if (result.hasErrors()) {
             return new ModelAndView("tl/form", "formErrors", result.getAllErrors());
         }
@@ -69,14 +69,14 @@ class RSMortgageUserController {
     }
 
     @RequestMapping(value = "modify/{id}", method = RequestMethod.GET)
-    public ModelAndView modifyForm(@PathVariable("id") final User user) {
+    public ModelAndView modifyForm(@PathVariable("id") final RsMortgageUser user) {
         return new ModelAndView("tl/form", "user", user);
     }
 
     // the form
 
     @RequestMapping(params = "form", method = RequestMethod.GET)
-    public String createForm(@ModelAttribute final User user) {
+    public String createForm(@ModelAttribute final RsMortgageUser user) {
         return "tl/form";
     }
 

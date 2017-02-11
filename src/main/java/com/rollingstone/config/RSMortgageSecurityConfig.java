@@ -22,7 +22,7 @@ import org.springframework.social.connect.mem.InMemoryUsersConnectionRepository;
 import org.springframework.social.connect.web.ProviderSignInController;
 
 import com.rollingstone.persistence.dao.UserRepository;
-import com.rollingstone.persistence.model.User;
+import com.rollingstone.persistence.model.RsMortgageUser;
 import com.rollingstone.security.CustomAuthenticationProvider;
 import com.rollingstone.security.FacebookConnectionSignup;
 import com.rollingstone.security.FacebookSignInAdapter;
@@ -67,7 +67,7 @@ public class RSMortgageSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@PostConstruct
 	private void saveTestUser() {
-		final User user = new User();
+		final RsMortgageUser user = new RsMortgageUser();
 		user.setEmail("test2@email.com");
 		user.setEnabled(true);
 		user.setCreated(Calendar.getInstance());

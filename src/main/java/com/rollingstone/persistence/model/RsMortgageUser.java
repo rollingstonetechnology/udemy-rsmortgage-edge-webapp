@@ -14,7 +14,7 @@ import org.hibernate.validator.constraints.Email;
 
 @Entity
 @Table(name = "rsmortgage_user")
-public class User {
+public class RsMortgageUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +35,7 @@ public class User {
 
     private Calendar created = Calendar.getInstance();
 
-    public User() {
+    public RsMortgageUser() {
         super();
         this.enabled = false;
     }

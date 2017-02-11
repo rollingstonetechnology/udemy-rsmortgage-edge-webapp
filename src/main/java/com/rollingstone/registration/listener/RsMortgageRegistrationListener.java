@@ -9,15 +9,15 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 
-import com.rollingstone.persistence.model.User;
-import com.rollingstone.registration.OnRegistrationCompleteEvent;
-import com.rollingstone.service.IUserService;
+import com.rollingstone.persistence.model.RsMortgageUser;
+import com.rollingstone.registration.RsMortgageOnRegistrationCompleteEvent;
+import com.rollingstone.service.RSMortgageUserServiceInterface;
 
 @Component
-public class RegistrationListener implements ApplicationListener<OnRegistrationCompleteEvent> {
+public class RsMortgageRegistrationListener implements ApplicationListener<RsMortgageOnRegistrationCompleteEvent> {
 
     @Autowired
-    private IUserService service;
+    private RSMortgageUserServiceInterface service;
  
     @Autowired
     private JavaMailSender mailSender;
@@ -28,12 +28,12 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
     // API
 
     @Override
-    public void onApplicationEvent(final OnRegistrationCompleteEvent event) {
+    public void onApplicationEvent(final RsMortgageOnRegistrationCompleteEvent event) {
         this.confirmRegistration(event);
     }
 
-    private void confirmRegistration(final OnRegistrationCompleteEvent event) {
-        final User user = event.getUser();
+    private void confirmRegistration(final RsMortgageOnRegistrationCompleteEvent event) {
+        final RsMortgageUser user = event.getUser();
         final String token = UUID.randomUUID().toString();
         service.createVerificationTokenForUser(user, token);
 
@@ -43,7 +43,7 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
 
     //
 
-    private SimpleMailMessage constructEmailMessage(final OnRegistrationCompleteEvent event, final User user, final String token) {
+    private SimpleMailMessage constructEmailMessage(final RsMortgageOnRegistrationCompleteEvent event, final RsMortgageUser user, final String token) {
         final String recipientAddress = user.getEmail();
         final String subject = "Registration Confirmation";
         final String confirmationUrl = event.getAppUrl() + "/registrationConfirm?token=" + token;
