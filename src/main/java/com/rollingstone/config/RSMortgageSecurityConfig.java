@@ -30,7 +30,7 @@ import com.rollingstone.security.FacebookSignInAdapter;
 @Configuration
 @EnableWebSecurity
 @ComponentScan(basePackages = { "com.rollingstone.security" })
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class RSMortgageSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private UserRepository userRepository;
@@ -50,11 +50,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception { // @formatter:off
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-	/*	CustomAuthenticationProvider customAuthenticationProvider = new CustomAuthenticationProvider();
-		customAuthenticationProvider.setUserDetailsService(userDetailsService);
-		customAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-        auth.authenticationProvider(customAuthenticationProvider);
-*/
 	} // @formatter:on
 
 	
@@ -70,14 +65,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(customAuthenticationProvider);
 	}
 
-	/*
-	 * @Override protected void configure(final HttpSecurity http) throws
-	 * Exception { // @formatter:off http .csrf().disable() .authorizeRequests()
-	 * .antMatchers("/login*","/signin/**","/signup/**").permitAll()
-	 * .anyRequest().authenticated() .and()
-	 * .formLogin().loginPage("/login").permitAll() .and() .logout(); }
-	 * // @formatter:on
-	 */
 	@PostConstruct
 	private void saveTestUser() {
 		final User user = new User();
@@ -87,13 +74,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		user.setPassword(passwordEncoder().encode("pass"));
 		userRepository.save(user);
 
-		/*
-		 * final User user1 = new User();
-		 * user1.setEmail("binitdatta@email.com"); user1.setEnabled(true);
-		 * user1.setCreated(Calendar.getInstance());
-		 * user1.setPassword(passwordEncoder().encode("Detachment$$1"));
-		 * userRepository.save(user1);
-		 */
 	}
 
 	@Override
@@ -107,12 +87,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.and().formLogin().loginPage("/login").permitAll()
 				// loginProcessingUrl("/login")
 
-				.and().rememberMe().key("lssAppKey").tokenValiditySeconds(604800) // 1
-																					// week
-																					// =
-																					// 604800
+				.and().rememberMe().key("lssAppKey").tokenValiditySeconds(604800) // One week is 604800 
 
-				.and().logout()// .permitAll().logoutUrl("/logout")
+				.and().logout()
 
 				.and().csrf().disable();
 	} // @formatter:on

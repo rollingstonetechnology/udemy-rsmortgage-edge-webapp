@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @Configuration
 @EnableWebMvc
-public class WebConfig extends WebMvcConfigurerAdapter {
+public class RSMortgageWebConfig extends WebMvcConfigurerAdapter {
 
 	private static final String[] CLASSPATH_RESOURCE_LOCATIONS = { "classpath:/META-INF/resources/",
 			"classpath:/resources/", "classpath:/static/", "classpath:/public/" };
@@ -40,12 +40,5 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/forgotPassword").setViewName("forgotPassword");
 
 	}
-
-	/*
-	 * @Override public void addResourceHandlers(final ResourceHandlerRegistry
-	 * registry) {
-	 * registry.addResourceHandler("/resources/**").addResourceLocations(
-	 * "/resources/"); }
-	 */
 
 }
