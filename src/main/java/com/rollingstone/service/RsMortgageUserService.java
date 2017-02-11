@@ -14,13 +14,13 @@ import com.rollingstone.persistence.dao.VerificationTokenRepository;
 import com.rollingstone.persistence.model.RSMortgagePasswordResetToken;
 import com.rollingstone.persistence.model.RsMortgageUser;
 import com.rollingstone.persistence.model.RsMortgageVerificationToken;
-import com.rollingstone.validation.EmailExistsException;
+import com.rollingstone.validation.RsMortgageEmailExistsException;
 
 @Service
 @Transactional
-class UserService implements RSMortgageUserServiceInterface {
+class RsMortgageUserService implements RSMortgageUserServiceInterface {
 
-	private final Logger slf4jLogger = LoggerFactory.getLogger(UserService.class);
+	private final Logger slf4jLogger = LoggerFactory.getLogger(RsMortgageUserService.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -36,9 +36,9 @@ class UserService implements RSMortgageUserServiceInterface {
 
     
     @Override
-    public RsMortgageUser registerNewUser(final RsMortgageUser user) throws EmailExistsException {
+    public RsMortgageUser registerNewUser(final RsMortgageUser user) throws RsMortgageEmailExistsException {
         if (emailExist(user.getEmail())) {
-            throw new EmailExistsException("There is an account with that email address: " + user.getEmail());
+            throw new RsMortgageEmailExistsException("There is an account with that email address: " + user.getEmail());
         }
         
         slf4jLogger.info("Kaka Paddword :"+user.getPassword());

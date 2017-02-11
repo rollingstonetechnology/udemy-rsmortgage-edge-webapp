@@ -33,7 +33,7 @@ import com.rollingstone.persistence.model.RsMortgageUser;
 import com.rollingstone.persistence.model.RsMortgageVerificationToken;
 import com.rollingstone.registration.RsMortgageOnRegistrationCompleteEvent;
 import com.rollingstone.service.RSMortgageUserServiceInterface;
-import com.rollingstone.validation.EmailExistsException;
+import com.rollingstone.validation.RsMortgageEmailExistsException;
 
 @Controller
 class RSMortgageRegistrationController {
@@ -73,7 +73,7 @@ class RSMortgageRegistrationController {
 
             final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
             rsMortgageEventPublisher.publishEvent(new RsMortgageOnRegistrationCompleteEvent(registered, appUrl));
-        } catch (EmailExistsException e) {
+        } catch (RsMortgageEmailExistsException e) {
             result.addError(new FieldError("user", "email", e.getMessage()));
             return new ModelAndView("registrationPage", "user", user);
         }

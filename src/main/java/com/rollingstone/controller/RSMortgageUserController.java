@@ -18,7 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.rollingstone.persistence.dao.UserRepository;
 import com.rollingstone.persistence.model.RsMortgageUser;
 import com.rollingstone.service.RSMortgageUserServiceInterface;
-import com.rollingstone.validation.EmailExistsException;
+import com.rollingstone.validation.RsMortgageEmailExistsException;
 
 
 @Controller
@@ -54,7 +54,7 @@ class RSMortgageUserController {
         }
         try {
             userService.registerNewUser(user);
-        } catch (EmailExistsException e) {
+        } catch (RsMortgageEmailExistsException e) {
             result.addError(new FieldError("user", "email", e.getMessage()));
             return new ModelAndView("tl/form", "user", user);
         }

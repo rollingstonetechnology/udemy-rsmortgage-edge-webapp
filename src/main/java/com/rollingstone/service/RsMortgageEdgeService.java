@@ -13,12 +13,12 @@ import com.rollingstone.persistence.model.DegreeType;
 
 @Service
 @Transactional
-public class EdgeService  {
+public class RsMortgageEdgeService  {
 
-	private final Logger slf4jLogger = LoggerFactory.getLogger(EdgeService.class);
+	private final Logger slf4jLogger = LoggerFactory.getLogger(RsMortgageEdgeService.class);
 
 	@Autowired
-	DegreeTypesClient degreeTypesClient;
+	RsMortgageDegreeTypesClient degreeTypesClient;
 	
 	public List<DegreeType> getAllDegreeTypes(){
 		return degreeTypesClient.getDegreeTypes();

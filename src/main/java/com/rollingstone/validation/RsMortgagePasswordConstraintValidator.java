@@ -14,10 +14,10 @@ import org.passay.SpecialCharacterRule;
 import org.passay.UppercaseCharacterRule;
 import org.passay.WhitespaceRule;
 
-public class PasswordConstraintValidator implements ConstraintValidator<ValidPassword, String> {
+public class RsMortgagePasswordConstraintValidator implements ConstraintValidator<RsMortgageValidPassword, String> {
 
     @Override
-    public void initialize(final ValidPassword arg0) {
+    public void initialize(final RsMortgageValidPassword arg0) {
     }
 
     @Override

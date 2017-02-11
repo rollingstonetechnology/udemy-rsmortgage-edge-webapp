@@ -7,10 +7,10 @@ import com.rollingstone.persistence.model.RsMortgageUser;
 
 
 
-public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, Object> {
+public class RsMortgagePasswordMatchesValidator implements ConstraintValidator<RsMortgagePasswordMatches, Object> {
 
     @Override
-    public void initialize(final PasswordMatches constraintAnnotation) {
+    public void initialize(final RsMortgagePasswordMatches constraintAnnotation) {
         //
     }
 

@@ -23,9 +23,9 @@ import org.springframework.social.connect.web.ProviderSignInController;
 
 import com.rollingstone.persistence.dao.UserRepository;
 import com.rollingstone.persistence.model.RsMortgageUser;
-import com.rollingstone.security.CustomAuthenticationProvider;
-import com.rollingstone.security.FacebookConnectionSignup;
-import com.rollingstone.security.FacebookSignInAdapter;
+import com.rollingstone.security.RsMortgageCustomAuthenticationProvider;
+import com.rollingstone.security.RSMortgageFacebookConnectionSignup;
+import com.rollingstone.security.RsMortgageFacebookSignInAdapter;
 
 @Configuration
 @EnableWebSecurity
@@ -45,7 +45,7 @@ public class RSMortgageSecurityConfig extends WebSecurityConfigurerAdapter {
 	private UsersConnectionRepository usersConnectionRepository;
 
 	@Autowired
-	private FacebookConnectionSignup facebookConnectionSignup;
+	private RSMortgageFacebookConnectionSignup facebookConnectionSignup;
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception { // @formatter:off
@@ -58,7 +58,7 @@ public class RSMortgageSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService);
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-		CustomAuthenticationProvider customAuthenticationProvider = new CustomAuthenticationProvider();
+		RsMortgageCustomAuthenticationProvider customAuthenticationProvider = new RsMortgageCustomAuthenticationProvider();
 		customAuthenticationProvider.setUserDetailsService(userDetailsService);
 		customAuthenticationProvider.setPasswordEncoder(passwordEncoder());
 
@@ -99,7 +99,7 @@ public class RSMortgageSecurityConfig extends WebSecurityConfigurerAdapter {
 	public ProviderSignInController providerSignInController() {
 		((InMemoryUsersConnectionRepository) usersConnectionRepository).setConnectionSignUp(facebookConnectionSignup);
 		return new ProviderSignInController(connectionFactoryLocator, usersConnectionRepository,
-				new FacebookSignInAdapter());
+				new RsMortgageFacebookSignInAdapter());
 	}
 
 	@Bean

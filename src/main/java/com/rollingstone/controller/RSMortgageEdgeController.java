@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rollingstone.persistence.model.DegreeType;
-import com.rollingstone.service.EdgeService;
+import com.rollingstone.service.RsMortgageEdgeService;
 
 @RestController
 @RequestMapping(value = "/rsmortgage-edge-service")
@@ -26,7 +26,7 @@ public class RSMortgageEdgeController {
 	private final Logger slf4jLogger = LoggerFactory.getLogger(RSMortgageEdgeController.class);
 
 	@Autowired
-	EdgeService edgeService; 
+	RsMortgageEdgeService edgeService; 
 	
 	  @RequestMapping(value = "/v1/degreeType",
 	            method = RequestMethod.GET,

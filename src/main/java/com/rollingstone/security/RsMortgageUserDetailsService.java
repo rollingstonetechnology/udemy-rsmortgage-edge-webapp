@@ -18,11 +18,11 @@ import com.rollingstone.persistence.dao.UserRepository;
 import com.rollingstone.persistence.model.RsMortgageUser;
 
 @Service
-public class MyUserDetailsService implements UserDetailsService {
+public class RsMortgageUserDetailsService implements UserDetailsService {
 
 	
 
-	private final Logger slf4jLogger = LoggerFactory.getLogger(MyUserDetailsService.class);
+	private final Logger slf4jLogger = LoggerFactory.getLogger(RsMortgageUserDetailsService.class);
 
     private static final String ROLE_USER = "ROLE_USER";
     
@@ -32,7 +32,7 @@ public class MyUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-    public MyUserDetailsService() {
+    public RsMortgageUserDetailsService() {
         super();
     }
 

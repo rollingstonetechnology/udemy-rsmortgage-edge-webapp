@@ -18,9 +18,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomAuthenticationProvider implements AuthenticationProvider {
+public class RsMortgageCustomAuthenticationProvider implements AuthenticationProvider {
 
-	private final Logger slf4jLogger = LoggerFactory.getLogger(CustomAuthenticationProvider.class);
+	private final Logger slf4jLogger = LoggerFactory.getLogger(RsMortgageCustomAuthenticationProvider.class);
 
 	
 	@Autowired
@@ -54,7 +54,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 				if (validUser){
 					 Collection<? extends GrantedAuthority> authorities = Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
 					 UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(name, password, authorities);
-					//Authentication auth = new UsernamePasswordAuthenticationToken(name, password);
 					return authenticationToken;
 				}
 			}
