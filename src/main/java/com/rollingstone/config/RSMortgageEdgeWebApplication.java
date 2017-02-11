@@ -22,35 +22,12 @@ import org.springframework.web.filter.CorsFilter;
 @EnableDiscoveryClient
 @EnableZuulProxy
 @EnableFeignClients(basePackages = {"com.rollingstone.service"})
-public class Application extends SpringBootServletInitializer {
+public class RSMortgageEdgeWebApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
-        //SpringApplication.run(Application.class, args);
-        
-        //ApplicationContext ctx = new SpringApplicationBuilder().bannerMode(Banner.Mode.CONSOLE).run(args);
-        
-        SpringApplication app = new SpringApplication(Application.class);
+        SpringApplication app = new SpringApplication(RSMortgageEdgeWebApplication.class);
         app.setBannerMode(Banner.Mode.OFF);
         app.run(args);
 
     }
-    
-  /*  @Bean
-    public CorsFilter corsFilter() {
-        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        final CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);
-        config.addAllowedOrigin("*");
-        config.addAllowedHeader("*");
-        config.addAllowedMethod("OPTIONS");
-        config.addAllowedMethod("HEAD");
-        config.addAllowedMethod("GET");
-        config.addAllowedMethod("PUT");
-        config.addAllowedMethod("POST");
-        config.addAllowedMethod("DELETE");
-        config.addAllowedMethod("PATCH");
-        source.registerCorsConfiguration("/**", config);
-        return new CorsFilter(source);
-    }*/
-
 }

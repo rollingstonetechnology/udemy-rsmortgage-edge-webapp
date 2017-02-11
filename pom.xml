@@ -216,7 +216,6 @@
 		<!-- mail -->
 		<javax.mail-api.version>1.5.5</javax.mail-api.version>
 		<javax.mail.version>1.5.5</javax.mail.version>
-		<start-class>com.rollingstone.config.Application</start-class>
 	</properties>
 
 </project>
