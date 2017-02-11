@@ -23,9 +23,9 @@ import com.rollingstone.validation.EmailExistsException;
 
 @Controller
 @RequestMapping("/user")
-class UserController {
+class RSMortgageUserController {
 
-	private final Logger slf4jLogger = LoggerFactory.getLogger(UserController.class);
+	private final Logger slf4jLogger = LoggerFactory.getLogger(RSMortgageUserController.class);
 
     @Autowired
     private UserRepository userRepository;

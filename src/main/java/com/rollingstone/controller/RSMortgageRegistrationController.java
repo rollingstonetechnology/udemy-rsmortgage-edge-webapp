@@ -36,9 +36,9 @@ import com.rollingstone.service.IUserService;
 import com.rollingstone.validation.EmailExistsException;
 
 @Controller
-class RegistrationController {
+class RSMortgageRegistrationController {
 
-	private final Logger slf4jLogger = LoggerFactory.getLogger(RegistrationController.class);
+	private final Logger slf4jLogger = LoggerFactory.getLogger(RSMortgageRegistrationController.class);
 
     @Autowired
     private ApplicationEventPublisher eventPublisher;

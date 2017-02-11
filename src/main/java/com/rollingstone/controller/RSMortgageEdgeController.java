@@ -21,9 +21,9 @@ import com.rollingstone.service.EdgeService;
 
 @RestController
 @RequestMapping(value = "/rsmortgage-edge-service")
-public class EdgeController {
+public class RSMortgageEdgeController {
 
-	private final Logger slf4jLogger = LoggerFactory.getLogger(EdgeController.class);
+	private final Logger slf4jLogger = LoggerFactory.getLogger(RSMortgageEdgeController.class);
 
 	@Autowired
 	EdgeService edgeService; 
